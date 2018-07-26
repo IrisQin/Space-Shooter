@@ -9,9 +9,16 @@ Sprite::Sprite(float _x, float _y, std::string& sImageFileName, float _speed ) :
 	GetImageSize(image, &width, &height);
 }
 
+Sprite::Sprite(float _x, float _y, int _width, int _height, float _speed) : x(_x), y(_y),width(_width), height(_height), speed(_speed) {
+	
+}
+
 Sprite::~Sprite() {
-	DestroyImage(image);
-	image = nullptr;
+	if (image != nullptr) {
+		DestroyImage(image);
+		image = nullptr;
+	}
+	
 }
 
 

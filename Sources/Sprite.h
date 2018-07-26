@@ -16,6 +16,7 @@ private:
 	
 
 public:
+	Sprite(float _x, float _y, int _width, int _height, float _speed = 0);
 	Sprite(float _x, float _y, std::string& sImageFileName, float _speed = 0);
 	~Sprite();
 

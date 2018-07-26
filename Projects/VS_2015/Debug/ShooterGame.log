@@ -1,2 +1,5 @@
-﻿  Sprite.cpp
+﻿  Main.cpp
+d:\job\shootergametemplate\shootergametemplate\sources\main.cpp(17): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+d:\job\shootergametemplate\shootergametemplate\sources\main.cpp(33): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+d:\job\shootergametemplate\shootergametemplate\sources\main.cpp(34): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   ShooterGame.vcxproj -> D:\JOB\ShooterGameTemplate\ShooterGameTemplate\Projects\VS_2015\Debug\ShooterGame.exe
