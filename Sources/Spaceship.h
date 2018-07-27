@@ -6,14 +6,31 @@ using namespace std;
 
 class Spaceship: public Sprite
 {
-private:
+protected:
 	vector<string> imageFiles;
 	int level;
-	bool _doubleGun = false;
-	int _health;
-	float _maxHealth;
+	bool doubleGun = false;
+	int health;
+	float maxHealth;
 public:
-	Spaceship(float _x, float _y, float _speed);
+	Spaceship(float _x, float _y, float _speed, int _level = 0);
+	virtual void shoot()=0;
 	void takeDamages();
 	void addHealth();
+};
+
+
+class PlayerShip : public Spaceship {
+public:
+	PlayerShip(float _x, float _y, float _speed, int _level = 0);
+	void shoot();
+
+
+};
+
+class EnemyShip : public Spaceship {
+public:
+	EnemyShip(float _x, float _y, float _speed, int _level = 0);
+	void shoot();
+
 };
