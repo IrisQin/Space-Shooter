@@ -11,6 +11,8 @@ protected:
 	int level = 0;
 	int health = 0;
 	float maxHealth = 0;
+	float shootCD = 0.3;
+	float shootTimer = 0;
 public:
 	Spaceship(float _x, float _y, float _speed, int _level = 0);
 	virtual void shoot()=0;

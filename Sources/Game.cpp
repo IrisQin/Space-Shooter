@@ -75,7 +75,6 @@ void Game::update() {
 			curr->draw();
 		}
 	}
-	cout << playerBullets.size()<<endl;
 
 	if (pause) {
 		ticks++;

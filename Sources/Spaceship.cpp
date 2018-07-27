@@ -44,22 +44,25 @@ PlayerShip::PlayerShip(float _x, float _y, float _speed, int _level) :Spaceship(
 }
 
 void PlayerShip::shoot() {
-	
-	string file = "../../Content/Textures/PlayerBullet.png";
-	Sprite* bullet = new Sprite(0, 0, file, 10.f);
-	Game::getInstance().playerBullets.push_back(bullet);
-	
-	float bulletX = x + width + 3;
-	float bulletY = y + height / 2 - bullet->getHeight() / 2;
-	bullet->setPosition(bulletX, bulletY);
-	if (level == 1) {
-		bullet->speed = 20.f;
-	}
-	else if (level == 2) {
-		bullet->speed = 20.f;
-		bullet->setPosition(bulletX, y + height / 2 - bullet->getHeight() / 2 - 3);
-		Sprite* bullet2 = new Sprite(bulletX, y + height / 2 + 3, file, 20.f);
-		Game::getInstance().playerBullets.push_back(bullet2);
+	if (GetGameTime() - shootTimer > shootCD) {
+		shootTimer = GetGameTime();
+		
+		string file = "../../Content/Textures/PlayerBullet.png";
+		Sprite* bullet = new Sprite(0, 0, file, 10.f);
+		Game::getInstance().playerBullets.push_back(bullet);
+
+		float bulletX = x + width;
+		float bulletY = y + height / 2 - bullet->getHeight() / 2;
+		bullet->setPosition(bulletX, bulletY);
+		if (level == 1) {
+			bullet->speed = 20.f;
+		}
+		else if (level == 2) {
+			bullet->speed = 20.f;
+			bullet->setPosition(bulletX, y + height / 2 - bullet->getHeight() / 2 - 3);
+			Sprite* bullet2 = new Sprite(bulletX, y + height / 2 + 3, file, 20.f);
+			Game::getInstance().playerBullets.push_back(bullet2);
+		}
 	}
 }
 
