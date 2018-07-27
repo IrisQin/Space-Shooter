@@ -7,6 +7,7 @@
 using namespace Simple2D;
 
 
+
 int main(int argc, char *argv[])
 {
 	

@@ -2,6 +2,8 @@
 
 #include <string>
 
+template<class T> inline void destroy(T*& p) { delete p; p = nullptr; }
+
 namespace Simple2D
 {
 	class Window;

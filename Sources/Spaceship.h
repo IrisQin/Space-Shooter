@@ -8,15 +8,14 @@ class Spaceship: public Sprite
 {
 protected:
 	vector<string> imageFiles;
-	int level;
-	bool doubleGun = false;
-	int health;
-	float maxHealth;
+	int level = 0;
+	int health = 0;
+	float maxHealth = 0;
 public:
 	Spaceship(float _x, float _y, float _speed, int _level = 0);
 	virtual void shoot()=0;
-	void takeDamages();
-	void addHealth();
+	//void takeDamages();
+	//void addHealth();
 };
 
 

@@ -20,6 +20,7 @@ Sprite::Sprite(float _x, float _y, int _width, int _height, float _speed) : x(_x
 Sprite::~Sprite() {
 	if (image != nullptr) {
 		DestroyImage(image);
+		image = nullptr;
 	}
 	
 }

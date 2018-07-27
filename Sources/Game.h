@@ -19,15 +19,11 @@ private:
 	Sprite* backGround;
 	Sprite* backGroundCopy;
 	Sprite* windowBoundary;
-
-
 	PlayerFactory* playerFactory;
-	
-	
 	Spaceship* playerShip;
 	
 	void input();
-	void destroyOutside(Sprite* s);
+	
 
 
 public:

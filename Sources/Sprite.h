@@ -7,10 +7,10 @@ class Sprite
 {
 protected:
 	// the position of the bottom-left point of the image in screen
-	float x,y;
+	float x = 0,y = 0;
 	// only set in constructor and when change image
-	int width, height;
-	Simple2D::Image* image;
+	int width = 0, height = 0;
+	Simple2D::Image* image = nullptr;
 	
 
 public:
@@ -21,7 +21,7 @@ public:
 	Sprite(float _x, float _y, std::string& sImageFileName, float _speed = 0);
 	~Sprite();
 
-	float speed;
+	float speed = 0;
 
 	void setPosition(float _x, float _y);
 	void move(float offsetX, float offsetY);

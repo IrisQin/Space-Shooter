@@ -25,11 +25,17 @@ Game& Game::getInstance() {
 }
 
 Game::~Game() {
-	if(playerShip) delete playerShip;
-	if (playerFactory) delete playerFactory;
-	if (windowBoundary) delete windowBoundary;
-	if (backGround) delete backGround;
-	if (backGroundCopy) delete backGroundCopy;
+	destroy(playerShip);
+	destroy(playerFactory);
+	destroy(windowBoundary);
+	destroy(backGround);
+	destroy(backGroundCopy);
+	if (!playerBullets.empty()) {
+		for (auto s : playerBullets ) destroy(s);
+	}
+	if (!enemyBullets.empty()) {
+		for (auto s : enemyBullets) destroy(s);
+	}
 }
 
 void Game::update() {
@@ -62,7 +68,7 @@ void Game::update() {
 		curr->move(1, 0);
 		if (!curr->intersect(windowBoundary)){
 			s = playerBullets.erase(s);
-			delete curr;
+			destroy(curr);
 		}
 		else {
 			s++;
