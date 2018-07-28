@@ -12,13 +12,18 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Extern\Simple2D\includes\Simple2D.h" />
-    <ClInclude Include="..\..\Sources\Game.h" />
+    <ClInclude Include="..\..\Sources\EnemyManager.h" />
+    <ClInclude Include="..\..\Sources\GameManager.h" />
+    <ClInclude Include="..\..\Sources\Helper.h" />
     <ClInclude Include="..\..\Sources\Spaceship.h" />
     <ClInclude Include="..\..\Sources\Sprite.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Sources\Game.cpp" />
+    <ClCompile Include="..\..\Sources\EnemyManager.cpp" />
+    <ClCompile Include="..\..\Sources\Explosion.cpp" />
+    <ClCompile Include="..\..\Sources\GameManager.cpp" />
     <ClCompile Include="..\..\Sources\Main.cpp" />
+    <ClCompile Include="..\..\Sources\SceneManager.cpp" />
     <ClCompile Include="..\..\Sources\Spaceship.cpp" />
     <ClCompile Include="..\..\Sources\Sprite.cpp" />
   </ItemGroup>

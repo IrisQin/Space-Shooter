@@ -1,12 +1,2 @@
-﻿  Spaceship.cpp
-d:\job\shootergametemplate\shootergametemplate\sources\spaceship.h(14): warning C4305: 'initializing': truncation from 'double' to 'float'
-d:\job\shootergametemplate\shootergametemplate\sources\spaceship.cpp(41): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-d:\job\shootergametemplate\shootergametemplate\sources\spaceship.cpp(73): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-d:\job\shootergametemplate\shootergametemplate\sources\spaceship.cpp(73): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-  Game.cpp
-d:\job\shootergametemplate\shootergametemplate\sources\spaceship.h(14): warning C4305: 'initializing': truncation from 'double' to 'float'
-d:\job\shootergametemplate\shootergametemplate\sources\game.cpp(15): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-d:\job\shootergametemplate\shootergametemplate\sources\game.cpp(44): warning C4305: '+=': truncation from 'double' to 'float'
-d:\job\shootergametemplate\shootergametemplate\sources\game.cpp(45): warning C4305: '+=': truncation from 'double' to 'float'
-  Generating Code...
+﻿  Main.cpp
   ShooterGame.vcxproj -> D:\JOB\ShooterGameTemplate\ShooterGameTemplate\Projects\VS_2015\Debug\ShooterGame.exe

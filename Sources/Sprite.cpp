@@ -1,14 +1,15 @@
 #include "Sprite.h"
 #include "Simple2D.h"
+#include "Helper.h"
 #include <iostream>
 using namespace Simple2D;
 
 
-Sprite::Sprite(float _x, float _y, float _speed) :x(_x), y(_y), speed(_speed) {
+Sprite::Sprite(float _x, float _y, float _speed, int _life) :x(_x), y(_y), speed(_speed), life(_life) {
 }
 
 
-Sprite::Sprite(float _x, float _y, std::string& sImageFileName, float _speed ) :x(_x), y(_y), speed(_speed) {
+Sprite::Sprite(float _x, float _y, std::string& sImageFileName, float _speed, int _life) :x(_x), y(_y), speed(_speed), life(_life) {
 	image = CreateImage(sImageFileName);
 	GetImageSize(image, &width, &height);
 }
@@ -31,33 +32,40 @@ void Sprite::setPosition(float _x, float _y) {
 	y = _y;
 }
 
-void Sprite::move(float offsetX, float offsetY){
-	setPosition(x + offsetX*speed, y + offsetY*speed);
+void Sprite::move(){
+	setPosition(x + dirX*speed, y + dirY*speed);
 }
 
-void Sprite::move(float offsetX, float offsetY, Sprite* boundary) {
+void Sprite::move(Sprite* boundary) {
 	float p1 = boundary->getX();
 	float p2 = boundary->getY();
 	float p3 = p1 + boundary->getWidth() - width;
 	float p4 = p2 + boundary->getHeight() - height;
-	float targetX = x + offsetX*speed;
-	float targetY = y + offsetY*speed;
+	float targetX = x + dirX*speed;
+	float targetY = y + dirY*speed;
 	if(targetX>p1 && targetY>p2 && targetX<p3 && targetY<p4) setPosition(targetX, targetY);
 }
 
-void Sprite::draw(float fRotation, float fScale){
-	DrawImage(image, x+ width/2, y+ height/2, fRotation, fScale);
+void Sprite::draw(){
+	DrawImage(image, x+ width/2, y+ height/2, rotation, scale);
 }
 
 void Sprite::changeImage(std::string& sImageFileName){
-	DestroyImage(image);	
-	image = CreateImage(sImageFileName);
-	GetImageSize(image, &width, &height);
+	Image* newimage = CreateImage(sImageFileName);
+	int newWidth, newHeight;
+	GetImageSize(newimage, &newWidth, &newHeight);
+	DestroyImage(image);
+	image = newimage;
+	setPosition(x + width / 2 - newWidth / 2, y + height / 2 - newHeight / 2);
+	width = newWidth;
+	height = newHeight;
 }
 
 bool Sprite::intersect(Sprite* s) {
 	return !((x + width < s->x) || (y > s->y+s->height) || (s->x+s->width < x) || (s->y > y+height));
 }
+
+
 
 float Sprite::getX() {
 	return x;
