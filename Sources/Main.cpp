@@ -10,6 +10,7 @@ using namespace Simple2D;
 
 int main(int argc, char *argv[])
 {
+	
 	srand((unsigned)time(NULL));
 	SceneManager& sceneManager = SceneManager::getInstance();
 	Window* pWindow = CreateWindow("ShooterGame", sceneManager.windowWidth, sceneManager.windowHeight);
@@ -18,6 +19,7 @@ int main(int argc, char *argv[])
 		sceneManager.update();
 		RefreshWindowBuffer(pWindow);
 	}
+	
 	DestroyWindow(pWindow);
 }
 

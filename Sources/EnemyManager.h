@@ -17,8 +17,6 @@ private:
 
 
 public:
-	// singleton
-	//static EnemyManager& getInstance();
 	EnemyManager();
 	~EnemyManager();
 	list<EnemyShip*> enemyShips;

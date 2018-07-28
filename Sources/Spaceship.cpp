@@ -2,6 +2,7 @@
 #include "Spaceship.h"
 #include "Simple2D.h"
 #include "GameManager.h"
+#include "SceneManager.cpp"
 #include "Helper.h"
 #include <iostream>
 using namespace Simple2D;
@@ -20,7 +21,7 @@ bool Spaceship::beCollided() {
 	// create explosion
 		string file = "../../Content/Textures/Explosion_1.png";
 		Explosion* e = new Explosion(0, 0,file);
-		e->setPosition(x+width/2-e->getWidth()/2, y+ height / 2 - e->getHeight() / 2);
+		e->setPosition(this);
 		GameManager::explosions.push_back(e);
 	}
 	return --life;
@@ -84,6 +85,24 @@ void PlayerShip::shoot() {
 	}
 }
 
+bool PlayerShip::beCollided() {
+	if (life == 1) {
+		// create explosion
+		string file = "../../Content/Textures/Explosion_1.png";
+		Explosion* e = new Explosion(0, 0, file);
+		e->setPosition(this);
+		GameManager::explosions.push_back(e);
+		// means GAME OVER
+		SceneManager::getInstance().setStatus(4);//Die
+		SceneManager::getInstance().dieTime = GetGameTime();
+	}
+	return --life;
+};
+
+bool PlayerShip::collide(Sprite* s) {
+	return life;
+}
+
 EnemyShip::EnemyShip(float _x, float _y,int _level,int _life) :Spaceship(_x, _y, 5, _level,_life) {
 	imageFiles.push_back("../../Content/Textures/Enemy_1.png");
 	imageFiles.push_back("../../Content/Textures/Enemy_2.png");
@@ -120,4 +139,16 @@ void EnemyShip::shoot() {
 			GameManager::enemyBullets.push_back(bullet2);
 		}
 	}
+}
+
+bool EnemyShip::collide(Sprite* s) { 
+	s->beCollided(); 
+	if (life == 1) {
+		// create explosion
+		string file = "../../Content/Textures/Explosion_1.png";
+		Explosion* e = new Explosion(0, 0, file);
+		e->setPosition(this);
+		GameManager::explosions.push_back(e);
+	}
+	return --life; 
 }

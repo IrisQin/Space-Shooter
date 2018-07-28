@@ -32,6 +32,11 @@ void Sprite::setPosition(float _x, float _y) {
 	y = _y;
 }
 
+void Sprite::setPosition(Sprite* s) {
+	x = s->getX() + s->getWidth() / 2 - width/2;
+	y = s->getY() + s->getHeight() / 2 - height / 2;
+}
+
 void Sprite::move(){
 	setPosition(x + dirX*speed, y + dirY*speed);
 }

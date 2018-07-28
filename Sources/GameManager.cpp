@@ -13,21 +13,13 @@ list<Sprite*> GameManager::enemyBullets;
 list<Explosion*>  GameManager::explosions;
 
 GameManager::GameManager():isKeyDown(170, false) {
-	
 	startTime = GetGameTime();
 	string backGFile = "../../Content/Textures/StarLayer.png";
 	backGroundCopy = new Sprite((float)SceneManager::getInstance().windowWidth, 0, backGFile, 3.f);
 	windowBoundary = new Sprite(0, 0, SceneManager::getInstance().windowWidth, SceneManager::getInstance().windowHeight);
-
-	//playerFactory = new PlayerFactory();
 	playerShips.push_back(new PlayerShip(0.f, 100.f, 8.f,0,3));
 	enemyManager = new EnemyManager();
 }
-
-//GameManager& GameManager::getInstance() {
-//	static GameManager instance;
-//	return instance;
-//}
 
 GameManager::~GameManager() {
 	destroy(windowBoundary);
@@ -35,17 +27,21 @@ GameManager::~GameManager() {
 	destroy(enemyManager);
 	if (!playerShips.empty()) {
 		for (auto s : playerShips) destroy(s);
+		playerShips.clear();
 	}
 	if (!playerBullets.empty()) {
 		for (auto s : playerBullets ) destroy(s);
+		playerBullets.clear();
 	}
 	if (!enemyBullets.empty()) {
 		for (auto s : enemyBullets) destroy(s);
+		enemyBullets.clear();
 	}
 	if (!explosions.empty()) {
 		for (auto s : explosions) destroy(s);
+		explosions.clear();
 	}
-}
+ }
 
 void GameManager::update() {
 
@@ -79,6 +75,7 @@ void GameManager::update() {
 	// deal with collision
 	collision(&playerBullets,&enemyManager->enemyShips);
 	collision(&enemyBullets, &playerShips);
+	collision(&enemyManager->enemyShips, &playerShips);
 
 	
 	// when player die

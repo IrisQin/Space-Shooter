@@ -16,10 +16,12 @@ protected:
 	float highBulletSpeed = 20.f;
 public:
 	Spaceship(float _x, float _y, float _speed, int _level = 0, int _life = 1);
+	virtual ~Spaceship() {};
 	virtual void shoot()=0;
-	bool beCollided();
+	virtual bool beCollided();
 	//void takeDamages();
 	//void addHealth();
+	
 };
 
 
@@ -27,7 +29,9 @@ class PlayerShip : public Spaceship {
 public:
 	PlayerShip(float _x, float _y, float _speed, int _level = 0, int _life = 1);
 	void shoot();
-
+	bool beCollided();
+	// when player collide with "upgrade" actively, its HP remains
+	bool collide(Sprite* s);
 
 };
 
@@ -36,5 +40,6 @@ public:
 	EnemyShip(float _x, float _y, int _level = 0, int _life = 1);
 	float birthTime;
 	void shoot();
+	bool collide(Sprite* s);
 
 };

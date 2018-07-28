@@ -18,17 +18,15 @@ private:
 
 	Sprite* backGroundCopy;
 	Sprite* windowBoundary;
-	// factories
-//	PlayerFactory* playerFactory;
 
-	// store all kinds of objects
 	list<PlayerShip*> playerShips;
 	
 	EnemyManager* enemyManager;
 
 	void input();
+	// call active's "collide()", call passive's "beCollided()"
 	template<class T1, class T2>
-	void collision(list<T1*>* i, list<T2*>* j);
+	void collision(list<T1*>* active, list<T2*>* passive);
 	template<class T>
 	void moveDieDraw(list<T*>* i);
 	void explode();
@@ -39,6 +37,7 @@ public:
 	//static GameManager& getInstance();
 	GameManager();
 	~GameManager();
+	
 	static list<Sprite*> playerBullets;
 	static list<Sprite*> enemyBullets;
 	static list<Explosion*> explosions;

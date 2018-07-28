@@ -30,6 +30,8 @@ public:
 	float dirX = -1, dirY = 0;
 
 	void setPosition(float _x, float _y);
+	// set a sprite's center same as another's
+	void setPosition(Sprite* s);
 	void move();
 	// move inside a specified boundary
 	void move(Sprite* boundary);
