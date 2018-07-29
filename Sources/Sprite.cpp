@@ -55,15 +55,22 @@ void Sprite::draw(){
 	DrawImage(image, x+ width/2, y+ height/2, rotation, scale);
 }
 
-void Sprite::changeImage(std::string& sImageFileName){
-	Image* newimage = CreateImage(sImageFileName);
-	int newWidth, newHeight;
-	GetImageSize(newimage, &newWidth, &newHeight);
-	DestroyImage(image);
-	image = newimage;
-	setPosition(x + width / 2 - newWidth / 2, y + height / 2 - newHeight / 2);
-	width = newWidth;
-	height = newHeight;
+void Sprite::setImage(std::string& sImageFileName){
+	if (image == nullptr) {
+		image = CreateImage(sImageFileName);
+		GetImageSize(image, &width, &height);
+	}
+	else {
+		Image* newimage = CreateImage(sImageFileName);
+		int newWidth, newHeight;
+		GetImageSize(newimage, &newWidth, &newHeight);
+		DestroyImage(image);
+		image = newimage;
+		setPosition(x + width / 2 - newWidth / 2, y + height / 2 - newHeight / 2);
+		width = newWidth;
+		height = newHeight;
+	
+	}
 }
 
 bool Sprite::intersect(Sprite* s) {

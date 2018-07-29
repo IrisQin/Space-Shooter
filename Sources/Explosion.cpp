@@ -17,7 +17,8 @@ public:
 	float birthTime = GetGameTime();
 	int stage = 1;
 	void change2next() {
-		changeImage(file2);
+		setImage(file2);
 		stage = 2;
 	};
 };
+

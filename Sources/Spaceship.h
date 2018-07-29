@@ -12,15 +12,13 @@ protected:
 	int level = 0;
 	float shootCD = 0.3f;
 	float shootTimer = 0;
-	float lowBulletSpeed = 10.f;
-	float highBulletSpeed = 20.f;
+	float lowBulletSpeed = 0;
+	float highBulletSpeed = 0;
 public:
 	Spaceship(float _x, float _y, float _speed, int _level = 0, int _life = 1);
 	virtual ~Spaceship() {};
 	virtual void shoot()=0;
 	virtual bool beCollided();
-	//void takeDamages();
-	//void addHealth();
 	
 };
 

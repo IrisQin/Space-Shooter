@@ -1,2 +1,4 @@
-﻿  Main.cpp
+﻿  Spaceship.cpp
+d:\job\shootergametemplate\shootergametemplate\sources\scenemanager.cpp(69): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+d:\job\shootergametemplate\shootergametemplate\sources\scenemanager.cpp(81): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   ShooterGame.vcxproj -> D:\JOB\ShooterGameTemplate\ShooterGameTemplate\Projects\VS_2015\Debug\ShooterGame.exe

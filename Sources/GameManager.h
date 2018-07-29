@@ -1,7 +1,5 @@
 #pragma once
 #include "Simple2D.h"
-#include "Spaceship.h"
-#include "Factory.cpp"
 #include "EnemyManager.h"
 #include "Explosion.cpp"
 #include "Helper.h"
@@ -12,7 +10,8 @@ using namespace std;
 class GameManager {
 private:
 	
-	float speed = 12,points = 0, startTime;
+	float startTime;
+	float upgradeSpawnTimer = 0;
 	bool pause = false;
 	vector<bool> isKeyDown;
 
@@ -20,8 +19,10 @@ private:
 	Sprite* windowBoundary;
 
 	list<PlayerShip*> playerShips;
+	list<Sprite*> upgrades;
+	EnemyManager *enemyManager;
+
 	
-	EnemyManager* enemyManager;
 
 	void input();
 	// call active's "collide()", call passive's "beCollided()"
@@ -30,14 +31,16 @@ private:
 	template<class T>
 	void moveDieDraw(list<T*>* i);
 	void explode();
-
+	void upgradeSpawn(float cd);
+	// move background in loop by using a copy
+	void moveBg();
 
 public:
-	// singleton
-	//static GameManager& getInstance();
 	GameManager();
 	~GameManager();
 	
+	
+	static float speed;
 	static list<Sprite*> playerBullets;
 	static list<Sprite*> enemyBullets;
 	static list<Explosion*> explosions;

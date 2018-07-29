@@ -1,6 +1,5 @@
 #include "Simple2D.h"
 #include "GameManager.h"
-#include "Spaceship.h"
 #include "Helper.h"
 #include <iostream>
 #include <vector> 
@@ -12,9 +11,11 @@ private:
 	SceneManager() {
 		font = CreateFont(string("../../Content/Fonts/AGENCYB.TTF"), 72);
 		string backGFile = "../../Content/Textures/StarLayer.png";
-		backGround = new Sprite(0, 0, backGFile, 3);
+		backGround = new Sprite(0, 0, backGFile, 1.f);	// here to adjust initial game speed
+		initSpeed = backGround->speed;
 		windowWidth = backGround->getWidth();
 		windowHeight = backGround->getHeight();
+		rightBoundary = windowWidth + 10;
 		string menuBgFile = "../../Content/Textures/Moon.png";
 		menuBg = new Sprite(0, 0, menuBgFile);
 		menuBg->setPosition(backGround);
@@ -47,6 +48,8 @@ public:
 	}
 
 	int windowWidth, windowHeight;
+	int rightBoundary;
+	float initSpeed;
 	float dieTime = 0;
 	Sprite* backGround;
 	Sprite* menuBg;

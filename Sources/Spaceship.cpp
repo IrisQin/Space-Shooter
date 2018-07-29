@@ -26,38 +26,16 @@ bool Spaceship::beCollided() {
 	}
 	return --life;
 };
-/*
-* Remove health when the spaceship is hit
-*/
-//void Spaceship::takeDamages()
-//{
-//	health -= 30;
-//	if (health <= 0) {
-//		health = 0;
-//	}
-//}
-
-
-
-/*
-* Add health to the spaceship
-*/
-//void Spaceship::addHealth()
-//{
-//	health += 30;
-//	if (health > maxHealth) {
-//		health = maxHealth;
-//	}
-//}
 
 
 PlayerShip::PlayerShip(float _x, float _y, float _speed, int _level, int _life) :Spaceship(_x, _y, _speed,_level,_life) {
 	imageFiles.push_back("../../Content/Textures/Player_1.png");
 	imageFiles.push_back("../../Content/Textures/Player_2.png");
 	imageFiles.push_back("../../Content/Textures/Player_3.png");
-	image = CreateImage(imageFiles[_level]);
-	GetImageSize(image, &width, &height);
+	setImage(imageFiles[_level]);
 	dirX = 1.f;
+	lowBulletSpeed = 12.f;
+	highBulletSpeed = 24.f;
 }
 
 void PlayerShip::shoot() {
@@ -100,20 +78,22 @@ bool PlayerShip::beCollided() {
 };
 
 bool PlayerShip::collide(Sprite* s) {
+	// NEED UPDATE: check sprite's type
+	s->beCollided();
+	if (level<2) setImage(imageFiles[++level]);
 	return life;
 }
 
-EnemyShip::EnemyShip(float _x, float _y,int _level,int _life) :Spaceship(_x, _y, 5, _level,_life) {
+EnemyShip::EnemyShip(float _x, float _y,int _level,int _life) :Spaceship(_x, _y, GameManager::speed+2.f, _level,_life) {
 	imageFiles.push_back("../../Content/Textures/Enemy_1.png");
 	imageFiles.push_back("../../Content/Textures/Enemy_2.png");
 	imageFiles.push_back("../../Content/Textures/Enemy_3.png");
-	image = CreateImage(imageFiles[_level]);
-	GetImageSize(image, &width, &height);
+	setImage(imageFiles[_level]);
 	birthTime = GetGameTime();
 	life = level + 1;
-	shootCD = 1.3f;
+	shootCD = 2.5f;
 	lowBulletSpeed = 7.f;
-	highBulletSpeed = 10.f;
+	highBulletSpeed = 15.f;
 }
 
 void EnemyShip::shoot() {

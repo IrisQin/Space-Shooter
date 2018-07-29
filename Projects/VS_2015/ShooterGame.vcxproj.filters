@@ -14,6 +14,7 @@
     <ClInclude Include="..\..\Sources\EnemyManager.h" />
     <ClInclude Include="..\..\Sources\GameManager.h" />
     <ClInclude Include="..\..\Sources\Helper.h" />
+    <ClInclude Include="..\..\Sources\Meteor.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Sources\Main.cpp" />
@@ -23,5 +24,6 @@
     <ClCompile Include="..\..\Sources\GameManager.cpp" />
     <ClCompile Include="..\..\Sources\Explosion.cpp" />
     <ClCompile Include="..\..\Sources\SceneManager.cpp" />
+    <ClCompile Include="..\..\Sources\Meteor.cpp" />
   </ItemGroup>
 </Project>
